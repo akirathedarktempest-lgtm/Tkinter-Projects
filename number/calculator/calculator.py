@@ -4,13 +4,7 @@ root=Tk()
 root.title("Yuzui~chan's Calculator!")
 y=""
 
-def ButtonConfig():#i am using global because I am afraid if the def can have that or not
-    global Buttonadd
-    global Buttonequal
-    global Buttonminus
-    global Buttonmultiply
-    global Buttondivide
-    global Button0#and there is reason we are bringing 0 here as well
+def ButtonConfig():#removed global...dar ke age jeet hai...i don't drink cold drinks though
     Buttonadd.config(state=NORMAL)
     Buttonminus.config(state=NORMAL)
     Buttonmultiply.config(state=NORMAL)
@@ -18,12 +12,6 @@ def ButtonConfig():#i am using global because I am afraid if the def can have th
     Buttonequal.config(state=NORMAL)
     Button0.config(state=NORMAL)
 def ButtonDisable():
-    global Buttonadd
-    global Buttonequal
-    global Buttonminus
-    global Buttonmultiply
-    global Buttondivide
-    global Button0
     Buttonadd.config(state=DISABLED)
     Buttonminus.config(state=DISABLED)
     Buttonmultiply.config(state=DISABLED)
@@ -122,36 +110,36 @@ def divide():
 
 myLabel=Label(root,text=y)
 Button0=Button(root,text="0",command=zero,height=2,width=2,state=DISABLED)
-Button0.grid(row=0,column=1)
+Button0.grid(row=1,column=1)
 Button1=Button(root,text="1",command=one,height=2,width=2)
-Button1.grid(row=0,column=2)
+Button1.grid(row=1,column=2)
 Button2=Button(root,text="2",command=two,height=2,width=2)
-Button2.grid(row=0,column=3)
+Button2.grid(row=1,column=3)
 Button3=Button(root,text="3",command=three,height=2,width=2)
-Button3.grid(row=1,column=1)
+Button3.grid(row=2,column=1)
 Button4=Button(root,text="4",command=four,height=2,width=2)
-Button4.grid(row=1,column=2)
+Button4.grid(row=2,column=2)
 Button5=Button(root,text="5",command=five,height=2,width=2)
-Button5.grid(row=1,column=3)
+Button5.grid(row=2,column=3)
 Button6=Button(root,text="6",command=six,height=2,width=2)
-Button6.grid(row=2,column=1)
+Button6.grid(row=3,column=1)
 Button7=Button(root,text="7",command=seven,height=2,width=2)
-Button7.grid(row=2,column=2)
+Button7.grid(row=3,column=2)
 Button8=Button(root,text="8",command=eight,height=2,width=2)
-Button8.grid(row=2,column=3)
+Button8.grid(row=3,column=3)
 Button9=Button(root,text="9",command=nine,height=2,width=2)
-Button9.grid(row=3,column=1)
+Button9.grid(row=4,column=1)
 Buttonadd=Button(root,text="+",command=add,state=DISABLED,height=2,width=2)#we are making it disable from the beginning, so that it wouldn't start like +1+2, no
-Buttonadd.grid(row=3,column=2)#we need to only activate it when a number is there and the last value wasn't +,-,*,/
+Buttonadd.grid(row=4,column=2)#we need to only activate it when a number is there and the last value wasn't +,-,*,/
 Buttonequal=Button(root,text="=",command=equal,state=DISABLED,height=2,width=2)
-Buttonequal.grid(row=3,column=3)
+Buttonequal.grid(row=4,column=3)
 Buttonminus=Button(root,text="-",command=minus,state=DISABLED,height=2,width=2)
-Buttonminus.grid(row=4,column=1)
+Buttonminus.grid(row=5,column=1)
 Buttonmultiply=Button(root,text="*",command=multiply,state=DISABLED,height=2,width=2)
-Buttonmultiply.grid(row=4,column=2)
+Buttonmultiply.grid(row=5,column=2)
 Buttondivide=Button(root,text="/",command=divide,state=DISABLED,height=2,width=2)
-Buttondivide.grid(row=4,column=3)
-myLabel.grid(row=5,column=4)#changed row and column as 
+Buttondivide.grid(row=5,column=3)
+myLabel.grid(row=0,column=0,columnspan=3)#changed row and column as #edit, recently learned columnspan :)! haha
 #the problem was at grid at every button, I had written Button0=Button().grid(), it should be Button0=Button()\nButton0.grid() and this is the correct way...huff
 #it wasn't showing myLabel without that
 root.mainloop()#and that's it, I am not a designer and don't know much about tkinter, I just learned about button, entry, label, grid, and pack and I made it by that only :)
