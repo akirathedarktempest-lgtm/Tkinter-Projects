@@ -16,7 +16,7 @@ images=cursor.fetchall()#we will use fetchall, all the image addresses
 y=0#this will work as indexing, like the first image would be 0 and so on
 myImg=ImageTk.PhotoImage(Image.open(images[y][0]))#in sqlite, we are doing double indexing, why? y is the indexing of the image and will give (image_address.png,), why "," because a tuple having one statement is treated like that
 myLab=Label(root,image=myImg)
-myLab.pack()
+myLab.grid(row=0,column=1,columnspan=5)
 
 def leftside():#this will make a button and keep on changing images here
     global y
@@ -44,7 +44,7 @@ def rightside():#same as the leftside, but it was making it minus behind, but th
 
 left_button=Button(root,text="<-",command=leftside)#buttons to move left or right
 right_button=Button(root,text="->",command=rightside)
-left_button.pack()#packing is important
-right_button.pack()
+left_button.grid(row=1,column=0)#packing is important
+right_button.grid(row=1,column=6)#this is now for better UX...i am not good at ui/ux, but i am trying to be better
 
 root.mainloop()
