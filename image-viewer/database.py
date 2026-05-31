@@ -17,6 +17,12 @@ def imagePath():
     if "\\" in e:
         e=e.replace("\\","/")
     path=Path(e)
+    cursor.execute("SELECT * FROM data")
+    info=cursor.fetchall()
+    for i in info:
+        if e==i[0]:#i once added the twice, and it wasn't looking good so I am adding this, this will stop duplicate files
+            entry.delete(0,END)
+            return myLab.config(text="The file is already there! No duplicates are allowed!")
     if path:
         if ".jpg" in e or ".png" in e or ".jpeg" in e or ".gif" in e or ".webp" in e:
             cursor.execute("INSERT INTO data VALUES (?)",[e])
@@ -26,7 +32,7 @@ def imagePath():
         else:
             myLab.config(text="No such image file is there! The image extension can jpg, jpeg, png, webp, gif")
     else:
-        myLab.config(text="There's file like that :(")
+        myLab.config(text="There's no file like that :(")
 
 entry=Entry(root)
 entry.pack()
