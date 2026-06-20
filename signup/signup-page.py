@@ -44,7 +44,7 @@ def signup():
     if password=="":
         return wrongLabel.config(text="Please make a password")
     if "@" not in email or "." not in email:
-        return wrongLabel.config("The email is not valid!")
+        return wrongLabel.config(text="The email is not valid")
     if validators.email(email):
         if name=="":
             em=email.split("@")
@@ -75,9 +75,9 @@ def signup():
                 pass
         wrongLabel.config(text="Something went wrong!")
     elif validators.email(email) is False:
-        wrongLabel.config("The email is not valid!")#this is to handle the error, but unfortunately, the error is still causing there, I don't know why, it is coming here only but causing an error, I will see for it later for now
-    else:#but for conext, the error is happening when you give an invalid email address, I even added "@" or "." not in email, but it still causes the error, I don't know why
-        wrongLabel.config("The email is not valid!")
+        wrongLabel.config(text="The email is not valid!")
+    else:
+        wrongLabel.config(text="The email is not valid!")
 
 button=Button(root,text="Sign Up",command=signup)
 wrongLabel.pack()
@@ -91,3 +91,5 @@ e3.pack()
 button.pack()
 
 root.mainloop()
+
+#error solved! i forgot to write like text=...such a pain...but problem solved guys!
